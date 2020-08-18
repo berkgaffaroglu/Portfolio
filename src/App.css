@@ -1,0 +1,51 @@
+@font-face {
+  font-family: 'Pangolin';
+  src: local('Pangolin'), url(./fonts/Pangolin-Regular.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  src: local('Roboto'), url(./fonts/Roboto-Regular.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Oswald';
+  src: local('Oswald'), url(./fonts/Oswald.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Raleway';
+  src: local('Raleway'), url(./fonts/Raleway.ttf) format('truetype');
+}
+
+.separator {
+  border: 1px black #e0e0e0;
+}
+
+body {
+  font-family: Roboto !important;
+}
+.projectImage {
+  width: 100px;
+  height: 100px;
+}
+.project-detail-img{
+  width: 80%;
+  max-width: 500px;
+}
+.project-card {
+  margin:10px;
+  padding: 10px;
+}
+.project-card-image:hover {
+  transform: scale(1.006);
+  cursor: pointer;
+}
+.project-card-image{
+  transform-origin: 0 0;
+  transition: transform .25s, visibility .25s ease-in;
+  height: 200px;
+}
+.social-media-button{
+  width: 300px;
+}
+.details-button {
+  width:210px;
+}
