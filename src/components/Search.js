@@ -23,7 +23,7 @@ export class FetchAll extends Component {
 
   fetchAllProjects() {
     var current_location = this.props.location.pathname
-    fetch(`http://localhost:8000/api${current_location}`)
+    fetch(`http://berkgaffaroglu.com/api${current_location}`)
       .then(response => response.json())
       .then(setTimeout(() => {
         this.setState({

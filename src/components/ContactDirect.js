@@ -68,7 +68,7 @@ export class ContactDirect extends Component {
     handleSubmit(event) {
         if (this.state.activeContact.title != "" && this.state.activeContact.content != "" && this.state.activeContact.e_mail != "") {
             var csrftoken = this.getCookie('csrftoken')
-            fetch("http://localhost:8000/api/contact/", {
+            fetch("http://berkgaffaroglu.com/api/contact/", {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json',

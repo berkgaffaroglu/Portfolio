@@ -20,7 +20,7 @@ export class FetchAll extends Component {
   }
 
   fetchAllProjects() {
-    fetch("http://localhost:8000/api/project-list/")
+    fetch("http://berkgaffaroglu.com/api/project-list/")
       .then(response => response.json())
       .then(setTimeout(() => {
         this.setState({

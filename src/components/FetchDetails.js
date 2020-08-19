@@ -22,7 +22,7 @@ export class FetchDetails extends Component {
     }
 
     fetchDetails(path) {
-        fetch(`http://localhost:8000/api${path}`)
+        fetch(`http://berkgaffaroglu.com/api${path}`)
             .then(response => response.json())
             .then(setTimeout(() => {
                 this.setState({
