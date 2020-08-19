@@ -47,7 +47,7 @@ export class FetchAll extends Component {
 
             {projects.map(function (project, index) {
               function urlImage(imageUrl) {
-                return ("http://localhost:8000/api" + imageUrl)
+                return ("http://berkgaffaroglu.com/api" + imageUrl)
               }
               function urlDetail(detailUrl) {
                 return ("/project-detail/" + detailUrl)
