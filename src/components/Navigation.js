@@ -36,11 +36,11 @@ class Navigation extends Component {
     render() {
 
         return (
-            <Navbar bg="dark" className="p-2 mb-5" variant="dark" expand="lg">
-                <LinkContainer exact to='/'><Navbar.Brand><b>Berk Gaffaroglu</b></Navbar.Brand></LinkContainer>
+            <Navbar style={{backgroundColor:"#212121"}} className="p-2 mb-5" variant="dark" expand="lg">
+                <LinkContainer exact to='/'><Navbar.Brand><span className="nav-element-header">Berk Gaffaroglu</span></Navbar.Brand></LinkContainer>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav>
+                    <Nav className="nav-element">
                     <LinkContainer exact to='/'><Nav.Link style={{marginBottom:"100px"}} className="custom-navlink">Home</Nav.Link></LinkContainer>
                     <LinkContainer to='/projects'><Nav.Link className="custom-navlink">Projects</Nav.Link></LinkContainer>
                     <LinkContainer to='/contact/direct'><Nav.Link className="custom-navlink">Contact</Nav.Link></LinkContainer>

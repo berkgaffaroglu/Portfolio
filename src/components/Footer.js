@@ -4,9 +4,10 @@ import {GiPowerLightning} from 'react-icons/gi'
 function Footer() {
     return (
 
-        <footer className="footer fixed-bottom bg-dark text-white text-center p-2">
+        <footer style={{backgroundColor:"#212121"}} className="footer fixed-bottom text-white text-center">
             <div>
-                <strong  style={{ fontFamily: "Pangolin" }} className="text-success"><GiPowerLightning/> Powered by <a style={{color:"white"}} href="https://www.django-rest-framework.org/" target="_blank">Django Rest API</a> & <a style={{color:"white"}} href="https://reactjs.org/" target="_blank">React.js</a></strong>
+                <span style={{ fontFamily: "Oswald" }}><GiPowerLightning/> Powered by <a style={{color:"#c2f2cf"}} href="https://www.django-rest-framework.org/" target="_blank">Django Rest API</a> & <a style={{color:"#c2f2cf"}} href="https://reactjs.org/" target="_blank">React.js</a>
+                </span>
             </div>
         </footer>
 

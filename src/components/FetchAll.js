@@ -19,19 +19,13 @@ export class FetchAll extends Component {
     this.fetchAllProjects()
   }
 
-  fetchAllProjects() {
-    fetch("http://berkgaffaroglu.com/api/project-list/")
-      .then(response => response.json())
-      .then(setTimeout(() => {
-        this.setState({
-          Render: true,
-        })
-      }, 500))
-      .then(data =>
-        this.setState({
-          projectList: data
-        })
-      )
+  async fetchAllProjects() {
+      var projectResponse = await(fetch('http://berkgaffaroglu.com/api/project-list/'))
+      var data = await projectResponse.json()
+      this.setState({
+        projectList: data,
+        Render:true
+      })
   }
 
 
@@ -56,11 +50,11 @@ export class FetchAll extends Component {
                 <div className="col-lg-4 col-md-6 col-sm-11 col-xs-12 mt-4">
                   <Card key={index} className="project-card text-center">
                     <LinkContainer to={urlDetail(project.slug)}><Card.Img variant="top" className="project-card-image" src={urlImage(project.image)} /></LinkContainer>
-                    <Card.Body><Card.Title><h2 style={{ textTransform: "uppercase" }, { fontFamily: "Raleway" }}>{project.title}</h2> <hr style={{ border: "1px solid #cccccc" }} /></Card.Title>
+                    <Card.Body><Card.Title><LinkContainer to={urlDetail(project.slug)}><h2 className="project-title" style={{ textTransform: "uppercase" }, { fontFamily: "Raleway" }}>{project.title}</h2></LinkContainer><hr style={{ border: "1px solid #cccccc" }} /></Card.Title>
                       <Card.Text><p style={{ fontFamily: "Raleway" }}>{project.description}</p></Card.Text>
                     </Card.Body>
 
-                    <ListGroup className="list-group-flush"><ListGroupItem ><p style={{ fontFamily: "Raleway" }}>Technologies used: {project.backend_category}, {project.frontend_category}</p></ListGroupItem></ListGroup>
+                    <ListGroup className="list-group-flush"><ListGroupItem ><p style={{ fontFamily: "Raleway" }}>Technologies used: {project.backend_category} {project.backend_category != null && project.frontend_category != null ? ',' : ''} {project.frontend_category}</p></ListGroupItem></ListGroup>
                     <Card.Body><LinkContainer to={urlDetail(project.slug)}><Button className="details-button" variant="success btn"> <h3 style={{ textTransform: "uppercase" }, { fontFamily: "Oswald" }}> DETAILS </h3> </Button></LinkContainer></Card.Body>
                   </Card>
                 </div>

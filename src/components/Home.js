@@ -26,8 +26,8 @@ function Home() {
                     <h4 className="text-black" style={{ fontFamily: "Oswald" }}>What are my technical skills? </h4>
                     <p className="text-black">
                     Programming languages that I know are Python, Javascript. In the back-end, I am comfortable using Django and PostgreSQL. 
-                    Even though I don't write much SQL Code, I can do whatever I want it. In front-end, I can use React which is a new skill that I have learned. 
-                    Also, I am familiar with Vue.js if it is needed I can create web-applications with it. I have started coding 6 years ago but not regularly. 
+                    In front-end, I can use React. 
+                    Also, I am familiar with Vue.js. I have started coding 6 years ago but not regularly. 
                     For the past 2.5 years, I am coding continuously. I can learn any web-framework, technology, or programming language quickly.
 
          </p>
@@ -39,7 +39,6 @@ function Home() {
                      I can adapt to pretty much every working environment.
                      I can handle stressful situations.
                      I can be focused on a task for a long time.
-                     I know when to give up. Also, I am not a perfectionist
                      I am a person who loves his character. 
 
 
@@ -52,7 +51,7 @@ function Home() {
                 <hr className="separator" />
                 <div className="row">
                     <div className="col">
-                        <p className="text-black text-center">The resume is important for candidates who applied for jobs. You can download my resume just by clicking <a href="{% static 'files/example.docx' %}">here</a>.</p>
+                        <p className="text-black text-center">The resume is important for candidates who applied for jobs. You can download my resume just by clicking <a href="#">here</a>.</p>
                     </div>
 
                 </div>
@@ -61,17 +60,18 @@ function Home() {
                 <h3 className="text-black text-center" style={{ fontFamily: "Oswald" }}><RiAccountPinCircleLine/>  My Accounts</h3>
                 <hr className="separator" />
                 <div className="row text-center">
-                    <div className="col-lg-4 col-md-6 col-sm-12 mb-5 mt-5">
+                    
+                    <div className="col-lg-4 col-md-6 col-sm-12 mb-3 mt-3">
                         <a className="btn btn-lg btn-outline-dark social-media-button" target="_blank" href="https://stackoverflow.com/users/story/12211188"><h3 style={{fontFamily:"Oswald"}}><DiStackoverflow /> Stackoverflow</h3></a>
                     </div>
-                    <div className="col-lg-4 col-md-6 col-sm-12 mb-5 mt-5">
+                    <div className="col-lg-4 col-md-6 col-sm-12 mb-3 mt-3">
                         <a className="btn btn-lg btn-outline-dark social-media-button" target="_blank" href="https://github.com/berkgaffaroglu"><h3 style={{fontFamily:"Oswald"}}><FaGithub /> Github</h3></a>
                     </div>
-                    <div className="col-lg-4 col-md-6 col-sm-12 mb-5 mt-5">
-                        <a className="btn btn-lg btn-outline-dark social-media-button" target="_blank" href="https://twitter.com/BerkGaffaroglu"><h3 style={{fontFamily:"Oswald"}}><AiFillTwitterSquare/> Twitter</h3></a>
+                    <div className="col-lg-4 col-md-6 col-sm-12 mb-3 mt-3">
+                        <a className="btn btn-lg btn-outline-dark social-media-button" target="_blank" href="#"><h3 style={{fontFamily:"Oswald"}}><AiFillTwitterSquare/> Twitter</h3></a>
                     </div>
-                    <div className="col-lg-4 col-md-6 col-sm-12 mb-5 mt-5">
-                        <a className="btn btn-lg btn-outline-dark social-media-button" target="_blank" href="https://twitter.com/BerkGaffaroglu"><h3 style={{fontFamily:"Oswald"}}><GrLinkedin/> Linkedin</h3></a>
+                    <div className="col-lg-4 col-md-6 col-sm-12 mb-3 mt-3">
+                        <a className="btn btn-lg btn-outline-dark social-media-button" target="_blank" href="#"><h3 style={{fontFamily:"Oswald"}}><GrLinkedin/> Linkedin</h3></a>
                     </div>
 
                 </div>

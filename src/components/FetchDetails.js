@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom';
 import { Carousel, CarouselItem, Spinner, Alert } from 'react-bootstrap';
 import CustomSpinner from './CustomSpinner';
-import {TiCancel} from 'react-icons/ti'
+import { TiCancel } from 'react-icons/ti'
 export class FetchDetails extends Component {
     constructor(props) {
         super(props)
@@ -21,19 +21,13 @@ export class FetchDetails extends Component {
 
     }
 
-    fetchDetails(path) {
-        fetch(`http://berkgaffaroglu.com/api${path}`)
-            .then(response => response.json())
-            .then(setTimeout(() => {
-                this.setState({
-                    Render: true,
-                })
-            }, 500))
-            .then(data =>
-                this.setState({
-                    project: data
-                })
-            )
+    async fetchDetails(path) {
+        var projectResponse = await(fetch(`http://berkgaffaroglu.com/api${path}`))
+        var data = await projectResponse.json()
+        this.setState({
+            project: data,
+            Render: true
+        })
 
     }
     render() {
@@ -68,23 +62,23 @@ export class FetchDetails extends Component {
                             </Carousel>
                         </center>
 
-                        <div class="jumbotron jumbotron-fluid text-black" style={{backgroundColor:"#fcfcfc"}}>
+                        <div class="jumbotron jumbotron-fluid text-black" style={{ backgroundColor: "white" }}>
                             <strong><h1 className="display-4 ml-4" style={{ textTransform: "uppercase" }}>{Project[0].title}</h1></strong>
                             <hr className="my-4 separator" />
-                            <h3 className="lead ml-4" ><p className="text-danger" style={{ fontFamily: "Oswald" }}><b>Content:</b></p>{Project[0].content}</h3>
+                            <h3 className="lead ml-4" ><p className="text-success" style={{ fontFamily: "Oswald" }}><b>Content:</b></p>{Project[0].content}</h3>
                             <hr className="my-4 separator" />
-                            <h3 class="lead ml-4"><p className="text-danger" style={{ fontFamily: "Oswald" }}><b>Technologies Used:</b></p> {Project[0].backend_category}, {Project[0].frontend_category}</h3>
+                            <h3 class="lead ml-4"><p className="text-success" style={{ fontFamily: "Oswald" }}><b>Technologies Used:</b></p> {Project[0].backend_category} {Project[0].backend_category != null && Project[0].frontend_category != null ? ',' : ''} {Project[0].frontend_category}</h3>
                             <hr className="my-4 separator" />
 
 
 
 
 
-                            <h3 class="lead ml-4"><p className="text-danger" style={{ fontFamily: "Oswald" }}><b>Live Version</b></p> 
-                            {Project[0].live_server != null ? <a href={Project[0].live_server}>Click here for the live version</a> : <p><TiCancel/> No</p>}
-                            
-                            
-                            
+                            <h3 class="lead ml-4"><p className="text-success" style={{ fontFamily: "Oswald" }}><b>Live Version:</b></p>
+                                {Project[0].live_server != null ? <a className="text-primary" target="_blank" href={Project[0].live_server}>Click Here</a> : <p><TiCancel /> No</p>}
+
+
+
                             </h3>
 
 
@@ -94,9 +88,9 @@ export class FetchDetails extends Component {
 
                             <hr className="my-4 separator" />
                             <h3 class="lead ml-4">
-                                
-                                <p className="text-danger" style={{ fontFamily: "Oswald" }}><b>Open Source</b></p>
-                                {Project[0].live_server != null ? <a href={Project[0].live_server}>Click here for the code</a> : <p><TiCancel/> No</p>}
+
+                                <p className="text-success" style={{ fontFamily: "Oswald" }}><b>The Code:</b></p>
+                                {Project[0].live_server != null ? <a className="text-primary" target="_blank" href={Project[0].live_server}>Click Here</a> : <p><TiCancel /> No</p>}
                             </h3>
 
                         </div>
@@ -115,7 +109,7 @@ export class FetchDetails extends Component {
             }
         } else {
             return (
-                <CustomSpinner/>
+                <CustomSpinner />
             )
         }
 

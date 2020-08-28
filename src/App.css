@@ -49,3 +49,24 @@ body {
 .details-button {
   width:210px;
 }
+.project-title {
+  color:#46bd7f;
+}
+.project-title:hover {
+  cursor: pointer;
+  color:#399e69;
+}
+.nav-element-header {
+  font-family: Raleway;
+  font-size:23px
+}
+.nav-element {
+  font-family: Raleway;
+  font-size:18px
+}
+.detail-link {
+  color:#239151;
+}
+.detail-link:hover {
+  color:#176638;
+}

@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import { Alert, Nav } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import ContactDirect from './ContactDirect'
-import {GrContact, GrSkype} from 'react-icons/gr'
-import {MdEmail} from 'react-icons/md'
-import {RiInformationLine} from 'react-icons/ri'
+import { GrContact, GrSkype } from 'react-icons/gr'
+import { MdEmail } from 'react-icons/md'
+import { RiInformationLine } from 'react-icons/ri'
+import {IoMdContact} from 'react-icons/io'
 
 class Contact extends Component {
     constructor(props) {
@@ -30,14 +31,10 @@ class Contact extends Component {
                 this.setState({
                     content:
                         <center>
-                            <div className="row" style={{marginTop:"30px"}}>
+                            <div className="row" style={{ marginTop: "30px" }}>
                                 <div className="col-md-6 mt-3 mb-3">
-                                <h1><MdEmail /></h1>
-                                <p>berk.gaffaroglu@gmail.com</p>
-                                </div>
-                                <div className="col-md-6 mt-3">
-                                <h1><GrSkype/></h1>
-                                <p>berk.gaffaroglu@gmail.com</p>
+                                    <h1><MdEmail /></h1>
+                                    <p>berk.gaffaroglu@gmail.com</p>
                                 </div>
                             </div>
                         </center>
@@ -47,13 +44,15 @@ class Contact extends Component {
 
         return (
             <React.Fragment>
+                <h3 className="text-black text-center" style={{ fontFamily: "Oswald" }, { textTransform: 'uppercase' }}><strong> <IoMdContact />  Contact</strong></h3>
+                <hr className="separator" />
                 <Nav variant="tabs" onSelect={handleSelect} defaultActiveKey='/contact/direct'>
 
                     <Nav.Item>
-                        <LinkContainer exact to="/contact/direct"><Nav.Link eventKey="0" ><GrContact/> <span style={{fontFamily:"Raleway"}}>Direct</span></Nav.Link></LinkContainer>
+                        <LinkContainer exact to="/contact/direct"><Nav.Link eventKey="0" ><GrContact /> <span style={{ fontFamily: "Raleway" }}>Direct</span></Nav.Link></LinkContainer>
                     </Nav.Item>
                     <Nav.Item>
-                        <LinkContainer exact to="/contact/information"><Nav.Link eventKey="1"><RiInformationLine /> <span style={{fontFamily:"Raleway"}}>Information</span></Nav.Link></LinkContainer>
+                        <LinkContainer exact to="/contact/information"><Nav.Link eventKey="1"><RiInformationLine /> <span style={{ fontFamily: "Raleway" }}>Information</span></Nav.Link></LinkContainer>
                     </Nav.Item>
 
                 </Nav>
