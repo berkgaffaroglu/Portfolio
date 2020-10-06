@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '!7t_vwb^n-)x+8k438lmxod(z3a7hue2khd0!krc)j(rg0xto9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
+
 
 
 # Application definition
@@ -131,5 +131,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 STATIC_ROOT = os.path.join(BASE_DIR, 'build', 'static')
 MEDIA_URL = '/media/'
 
-CORS_ORIGIN_ALLOW_ALL = True
+ALLOWED_HOSTS = ['berkgaffaroglu.com', 'localhost', '127.0.0.1']
+
+CORS_ALLOWED_ORIGINS = [
+    "http://berkgaffaroglu.com", "http://localhost:8000", "http://localhost:3000"
+]
+CORS_ORIGIN_WHITELIST = [
+    "http://berkgaffaroglu.com", "http://localhost:8000", "http://localhost:3000"
+]
+
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

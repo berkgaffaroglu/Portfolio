@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { Alert, Nav } from 'react-bootstrap'
+import { Nav } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import ContactDirect from './ContactDirect'
-import { GrContact, GrSkype } from 'react-icons/gr'
+import { GrContact } from 'react-icons/gr'
 import { MdEmail } from 'react-icons/md'
 import { RiInformationLine } from 'react-icons/ri'
 import {IoMdContact} from 'react-icons/io'
@@ -13,7 +13,7 @@ class Contact extends Component {
 
         this.state = {
             showMessage: false,
-            content: <ContactDirect />,
+            content: <ContactDirect websiteUrl={this.props.websiteUrl} />,
 
         }
 
@@ -25,7 +25,7 @@ class Contact extends Component {
         const handleSelect = (eventKey) => {
             if (eventKey == 0) {
                 this.setState({
-                    content: <ContactDirect />
+                    content: <ContactDirect websiteUrl={this.props.websiteUrl}/>
                 })
             } else if (eventKey == 1) {
                 this.setState({
@@ -44,7 +44,7 @@ class Contact extends Component {
 
         return (
             <React.Fragment>
-                <h3 className="text-black text-center" style={{ fontFamily: "Oswald" }, { textTransform: 'uppercase' }}><strong> <IoMdContact />  Contact</strong></h3>
+                <h3 className="text-black text-center" style={{ fontFamily: "Oswald" } , { textTransform: 'uppercase' }}><strong> <IoMdContact />  Contact</strong></h3>
                 <hr className="separator" />
                 <Nav variant="tabs" onSelect={handleSelect} defaultActiveKey='/contact/direct'>
 

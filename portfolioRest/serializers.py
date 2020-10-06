@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Project, ProjectImage, Contact
+from .models import Project, ProjectImage, Contact, GeneralInformation
 
 class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
@@ -15,4 +15,9 @@ class ProjectImageSerializer(serializers.ModelSerializer):
 class ContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contact
+        fields = '__all__'
+
+class GeneralInformationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = GeneralInformation
         fields = '__all__'

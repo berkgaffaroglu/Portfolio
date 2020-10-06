@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom';
-import { Carousel, CarouselItem, Spinner, Alert } from 'react-bootstrap';
+import {withRouter, useLocation } from 'react-router-dom';
+import { Carousel, CarouselItem, Alert } from 'react-bootstrap';
 import CustomSpinner from './CustomSpinner';
 import { TiCancel } from 'react-icons/ti'
 export class FetchDetails extends Component {
@@ -13,16 +13,21 @@ export class FetchDetails extends Component {
             Render: false,
             live_version: false,
             github_repository: false,
+            
         }
+
+        
+
     }
 
     componentWillMount() {
-        this.fetchDetails(this.props.location.pathname)
+        this.fetchDetails(window.location.pathname)
 
     }
 
     async fetchDetails(path) {
-        var projectResponse = await(fetch(`http://berkgaffaroglu.com/api${path}`))
+        
+        var projectResponse = await (fetch(`${this.props.websiteUrl}/api${path}`))
         var data = await projectResponse.json()
         this.setState({
             project: data,
@@ -31,11 +36,11 @@ export class FetchDetails extends Component {
 
     }
     render() {
-
+        var websiteUrl = this.props.websiteUrl
         /* In here, Django's ImageField doesn't work and I manipulate strings to get the images from the api.*/
         function urlImage(imageUrl) {
-            imageUrl = imageUrl.split('http://berkgaffaroglu.com/')[1]
-            return (`http://berkgaffaroglu.com/api/${imageUrl}`)
+            imageUrl = imageUrl.split(websiteUrl)[1]
+            return (`${websiteUrl}/api/${imageUrl}`)
         }
         var Project = this.state.project
         if (this.state.Render) {
@@ -45,7 +50,7 @@ export class FetchDetails extends Component {
                 const images = projectImageArray.map((project, index) =>
 
                     <CarouselItem key={index}>
-                        <img className="project-detail-img" src={urlImage(project.image)} alt="Third slide" />
+                        <img className="project-detail-img" src={urlImage(project.image)} alt="-" />
                     </CarouselItem>
                 );
                 return (
@@ -55,14 +60,14 @@ export class FetchDetails extends Component {
                             <Carousel className="bg-dark text-white p-3">
 
                                 <CarouselItem>
-                                    <img className="project-detail-img" src={urlImage(Project[0].image)} alt="Third slide" />
+                                    <img className="project-detail-img" src={urlImage(Project[0].image)} alt="-" />
                                 </CarouselItem>
                                 {images}
 
                             </Carousel>
                         </center>
 
-                        <div class="jumbotron jumbotron-fluid text-black" style={{ backgroundColor: "white" }}>
+                        <div className="jumbotron jumbotron-fluid text-black" style={{ backgroundColor: "white" }}>
                             <strong><h1 className="display-4 ml-4" style={{ textTransform: "uppercase" }}>{Project[0].title}</h1></strong>
                             <hr className="my-4 separator" />
                             <h3 className="lead ml-4" ><p className="text-success" style={{ fontFamily: "Oswald" }}><b>Content:</b></p>{Project[0].content}</h3>
@@ -75,27 +80,15 @@ export class FetchDetails extends Component {
 
 
                             <h3 class="lead ml-4"><p className="text-success" style={{ fontFamily: "Oswald" }}><b>Live Version:</b></p>
-                                {Project[0].live_server != null ? <a className="text-primary" target="_blank" href={Project[0].live_server}>Click Here</a> : <p><TiCancel /> No</p>}
-
-
-
+                                {Project[0].live_server != null ? <a className="text-primary" target="_blank" rel="noopener noreferrer" href={Project[0].live_server}>Click Here</a> : <p><TiCancel /> No</p>}
                             </h3>
-
-
-
-
-
-
                             <hr className="my-4 separator" />
                             <h3 class="lead ml-4">
-
                                 <p className="text-success" style={{ fontFamily: "Oswald" }}><b>The Code:</b></p>
-                                {Project[0].live_server != null ? <a className="text-primary" target="_blank" href={Project[0].live_server}>Click Here</a> : <p><TiCancel /> No</p>}
+                                {Project[0].live_server != null ? <a className="text-primary" target="_blank" rel="noopener noreferrer" href={Project[0].github_repository}>Click Here</a> : <p><TiCancel /> No</p>}
                             </h3>
-
                         </div>
                     </div>
-
                 )
             } else {
                 return (

@@ -50,6 +50,18 @@ class Contact(models.Model):
     e_mail = models.CharField(null=True, blank=True, max_length=255)
     skype = models.CharField(null=True, blank=True, max_length=255)
     created_on = models.DateTimeField(auto_now_add=True)
-
+    
     def __str_(self):
         return self.title
+
+class GeneralInformation(models.Model):
+    who_am_i = models.TextField()
+    what_are_my_technical_skills = models.TextField()
+    what_is_my_personality = models.TextField()
+    stackoverflow_link = models.CharField(null=True, blank=True, max_length=255)
+    github_link = models.CharField(null=True, blank=True, max_length=255)
+    twitter = models.CharField(null=True, blank=True, max_length=255)
+    linkedin = models.CharField(null=True, blank=True, max_length=255)
+    # Serialize this model. 
+
+

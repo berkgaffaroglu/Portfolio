@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import FetchAll from './components/FetchAll'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -10,20 +9,19 @@ import Home from './components/Home';
 import Contact from './components/Contact';
 import Search from './components/Search';
 import Footer from './components/Footer';
-import ContactDirect from './components/ContactDirect';
 function App() {
+  const websiteUrl = 'http://berkgaffaroglu.com'
   return (
-
     <Router>
       <div className="App">
         <Navigation />
         <div className='container content'>
           <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/projects" component={FetchAll} />
-            <Route path="/contact" component={Contact} />
-            <Route path="/project-detail/:str" component={FetchDetails} />
-            <Route path="/search/:str" component={Search} />
+            <Route exact path="/" component={(props) => <Home websiteUrl={websiteUrl} />} />
+            <Route path="/projects" component={(props) => <FetchAll websiteUrl={websiteUrl} />} />
+            <Route path="/contact" component={(props) => <Contact websiteUrl={websiteUrl} />} />
+            <Route path="/project-detail/:str" component={(props) => <FetchDetails websiteUrl={websiteUrl} />}/>
+            <Route path="/search/:str" component={(props) => <Search websiteUrl={websiteUrl} />} />
             <Route component={Idle} />
           </Switch>
 

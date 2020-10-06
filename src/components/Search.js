@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, ListGroupItem, ListGroup, Spinner, Alert, Button } from 'react-bootstrap'
+import { Card, ListGroupItem, ListGroup, Alert, Button } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import { withRouter } from 'react-router-dom'
 import CustomSpinner from './CustomSpinner'
@@ -23,7 +23,7 @@ export class FetchAll extends Component {
 
   async fetchAllProjects() {
     var current_location = this.props.location.pathname
-    var projectResponse = await(fetch(`http://berkgaffaroglu.com/api${current_location}`))
+    var projectResponse = await(fetch(`${this.props.websiteUrl}/api${current_location}`))
     var data = await projectResponse.json()
     this.setState({
       projectList: data,
@@ -35,8 +35,10 @@ export class FetchAll extends Component {
 
   render() {
     var projects = this.state.projectList
+    const websiteUrl = this.props.websiteUrl
     if (this.state.Render) {
       if (projects.length != 0) {
+        
         return (
           <React.Fragment>
             <Alert variant="success">
@@ -47,19 +49,19 @@ export class FetchAll extends Component {
             </Alert>
             <div className="row" style={{ marginBottom: "200px" }}>
 
-              {projects.map(function (project, index) {
+              {projects.map((project, index) => {
                 function urlImage(imageUrl) {
-                  return ("http://berkgaffaroglu.com/api" + imageUrl)
+                  return (`${websiteUrl}/api` + imageUrl)
                 }
                 function urlDetail(detailUrl) {
                   return ("/project-detail/" + detailUrl)
                 }
                 return (
-                  <div className="col-lg-4 col-md-6 col-sm-11 col-xs-12 mt-4">
-                  <Card key={index} className="project-card text-center">
+                  <div key={index} className="col-lg-4 col-md-6 col-sm-11 col-xs-12 mt-4">
+                  <Card className="project-card text-center">
                     <LinkContainer to={urlDetail(project.slug)}><Card.Img variant="top" className="project-card-image" src={urlImage(project.image)} /></LinkContainer>
                     <Card.Body><Card.Title><LinkContainer to={urlDetail(project.slug)}><h2 className="project-title" style={{textTransform:"uppercase"},{fontFamily:"Raleway"}}>{project.title}</h2></LinkContainer><hr style={{border:"1px solid #cccccc"}}/></Card.Title>
-                    <Card.Text><p style={{fontFamily:"Raleway"}}>{project.description}</p></Card.Text>
+                    <Card.Text><span style={{fontFamily:"Raleway"}}>{project.description}</span></Card.Text>
                     </Card.Body>
                     
                     <ListGroup className="list-group-flush"><ListGroupItem ><p style={{fontFamily:"Raleway"}}>Technologies used: {project.backend_category} {project.backend_category != null && project.frontend_category != null ? ',' : ''} {project.frontend_category}</p></ListGroupItem></ListGroup>

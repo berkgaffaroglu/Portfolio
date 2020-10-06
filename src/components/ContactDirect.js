@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Form, Button, Alert, OverlayTrigger, Tooltip, Image } from 'react-bootstrap'
+import { Form, Alert } from 'react-bootstrap'
 import {AiFillStar} from 'react-icons/ai'
 export class ContactDirect extends Component {
     constructor(props) {
@@ -68,7 +68,7 @@ export class ContactDirect extends Component {
     handleSubmit(event) {
         if (this.state.activeContact.title != "" && this.state.activeContact.content != "" && this.state.activeContact.e_mail != "") {
             var csrftoken = this.getCookie('csrftoken')
-            fetch("http://berkgaffaroglu.com/api/contact/", {
+            fetch(`${this.props.websiteUrl}/api/contact/`, {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json',

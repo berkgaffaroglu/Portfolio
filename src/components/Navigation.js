@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import { Nav, Form, Button, FormControl,Navbar, NavDropdown} from 'react-bootstrap'
+import { Nav, Form, Button, FormControl,Navbar} from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import { withRouter } from 'react-router-dom'
 import {MdSearch} from "react-icons/md";
-import {AiFillHome} from "react-icons/ai";
 
 class Navigation extends Component {
     constructor(state) {

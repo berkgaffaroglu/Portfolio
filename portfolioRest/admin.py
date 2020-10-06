@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Project, ProjectImage, Contact
+from .models import Project, ProjectImage, Contact, GeneralInformation
 # Register your models here.
 
 class ProjectImageAdmin(admin.StackedInline):
@@ -19,4 +19,6 @@ class ContactAdmin(admin.ModelAdmin):
     readonly_fields = ('title','content','company_name','e_mail','skype','created_on')
     class Meta:
         model = Contact
+
+admin.site.register(GeneralInformation)
 
