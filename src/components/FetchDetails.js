@@ -40,7 +40,7 @@ export class FetchDetails extends Component {
         /* In here, Django's ImageField doesn't work and I manipulate strings to get the images from the api.*/
         function urlImage(imageUrl) {
             imageUrl = imageUrl.split(websiteUrl)[1]
-            return (`${websiteUrl}/api/${imageUrl}`)
+            return (`${websiteUrl}/api${imageUrl}`)
         }
         var Project = this.state.project
         if (this.state.Render) {
