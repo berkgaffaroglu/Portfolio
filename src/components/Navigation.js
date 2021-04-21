@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { Nav, Form, Button, FormControl,Navbar} from 'react-bootstrap'
+import { Nav, Form, Button, FormControl, Navbar } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import { withRouter } from 'react-router-dom'
-import {MdSearch} from "react-icons/md";
-
+import { MdSearch } from "react-icons/md";
+import logo from '../logo2.png';
 class Navigation extends Component {
     constructor(state) {
         super(state);
@@ -25,32 +25,33 @@ class Navigation extends Component {
     }
 
     handleSubmit(event) {
-        if(this.state.value != "") {
-        this.props.history.push(`/search/${this.state.value}`);
+        if (this.state.value != "") {
+            this.props.history.push(`/search/${this.state.value}`);
         } else {
             event.preventDefault();
         }
     }
 
     render() {
-
         return (
-            <Navbar style={{backgroundColor:"#212121"}} className="p-2 mb-5" variant="dark" expand="lg">
-                <LinkContainer exact to='/'><Navbar.Brand><span className="nav-element-header">Berk Gaffaroglu</span></Navbar.Brand></LinkContainer>
+            
+            <Navbar style={{ backgroundColor: "#02203c" , zIndex:"999"}} variant="dark" className="p-4 mb-3" expand="lg">
+
+                <LinkContainer exact to='/'><Navbar.Brand><img src={logo} className="ml-lg-5 mr-lg-5"></img></Navbar.Brand></LinkContainer>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
+                    <br />
                     <Nav className="nav-element">
-                    <LinkContainer exact to='/'><Nav.Link style={{marginBottom:"100px"}} className="custom-navlink">Home</Nav.Link></LinkContainer>
-                    <LinkContainer to='/projects'><Nav.Link className="custom-navlink">Projects</Nav.Link></LinkContainer>
-                    <LinkContainer to='/contact/direct'><Nav.Link className="custom-navlink">Contact</Nav.Link></LinkContainer>
+                        <LinkContainer exact to='/'><Nav.Link className="custom-navlink animate__animated animate__fadeIn animate__delay__2s"><span style={{ fontSize: "22px" }} className="text-uppercase mr-2">anasayfa</span></Nav.Link></LinkContainer>
+                        <LinkContainer to='/projects'><Nav.Link className="custom-navlink animate__animated animate__fadeIn"><span style={{ fontSize: "22px" }} className="text-uppercase mr-2">projeler</span></Nav.Link></LinkContainer>
+                        <LinkContainer to='/contact/direct'><Nav.Link className="custom-navlink animate__animated animate__fadeIn"><span style={{ fontSize: "22px" }} className="text-uppercase mr-2">iletişim</span></Nav.Link></LinkContainer>
                     </Nav>
-                    <Form className="mr-auto"  onSubmit={this.handleSubmit} inline>
-                        <FormControl className="ml-lg-5" style={{width:"250px"}} value={this.state.value} onChange={this.handleChange} type="text" placeholder="Search in projects" />
-                        <Button type="submit" className="ml-lg-1 ml-xs-3" variant="success"><MdSearch/></Button>
+                    <Form className="mr-auto animate__animated animate__fadeIn"  onSubmit={this.handleSubmit} inline>
+                        <FormControl size="lg" className="ml-lg-5" style={{width:"250px"}} value={this.state.value} onChange={this.handleChange} type="text" placeholder="Projelerde ara.." />
+                        <Button size="lg" type="submit" className="ml-lg-1 ml-xs-3" variant="success"><MdSearch/></Button>
                     </Form>
                 </Navbar.Collapse>
             </Navbar>
-            
 
         )
     }

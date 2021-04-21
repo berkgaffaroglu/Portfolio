@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import {withRouter, useLocation } from 'react-router-dom';
+import { withRouter, useLocation } from 'react-router-dom';
 import { Carousel, CarouselItem, Alert } from 'react-bootstrap';
 import CustomSpinner from './CustomSpinner';
 import { TiCancel } from 'react-icons/ti'
+import { comaCreator, createSearchLink } from './Utils'
 export class FetchDetails extends Component {
     constructor(props) {
         super(props)
@@ -13,10 +14,11 @@ export class FetchDetails extends Component {
             Render: false,
             live_version: false,
             github_repository: false,
-            
+            error: false
+
         }
 
-        
+
 
     }
 
@@ -25,25 +27,40 @@ export class FetchDetails extends Component {
 
     }
 
+    createSearchLink(keyword) {
+        return this.state.websiteUrl + '/search/' + keyword + '?';
+    }
+
     async fetchDetails(path) {
-        
-        var projectResponse = await (fetch(`${this.props.websiteUrl}/api${path}`))
-        var data = await projectResponse.json()
-        this.setState({
-            project: data,
-            Render: true
-        })
+        try {
+            var projectResponse = await (fetch(`${this.props.websiteUrl}/api${path}`))
+            var data = await projectResponse.json()
+            if (projectResponse.status != 500) {
+                this.setState({
+                    project: data,
+                    Render: true
+                })
+            }
+        } catch {
+            this.setState({
+                error: true
+            })
+        }
+
 
     }
     render() {
         var websiteUrl = this.props.websiteUrl
-        /* In here, Django's ImageField doesn't work and I manipulate strings to get the images from the api.*/
+
         function urlImage(imageUrl) {
             imageUrl = imageUrl.split(websiteUrl)[1]
             return (`${websiteUrl}/api${imageUrl}`)
         }
         var Project = this.state.project
+
+
         if (this.state.Render) {
+            const { frontend_category, backend_category, image, title, content, live_server, github_repository } = Project[0]
             /* Mapping the extra images in the project for the carousel.*/
             var projectImageArray = this.state.project[1]
             if (projectImageArray) {
@@ -60,7 +77,7 @@ export class FetchDetails extends Component {
                             <Carousel className="bg-dark text-white p-3">
 
                                 <CarouselItem>
-                                    <img className="project-detail-img" src={urlImage(Project[0].image)} alt="-" />
+                                    <img className="project-detail-img" src={urlImage(image)} />
                                 </CarouselItem>
                                 {images}
 
@@ -68,43 +85,74 @@ export class FetchDetails extends Component {
                         </center>
 
                         <div className="jumbotron jumbotron-fluid text-black" style={{ backgroundColor: "white" }}>
-                            <strong><h1 className="display-4 ml-4" style={{ textTransform: "uppercase" }}>{Project[0].title}</h1></strong>
-                            <hr className="my-4 separator" />
-                            <h3 className="lead ml-4" ><p className="text-success" style={{ fontFamily: "Oswald" }}><b>Content:</b></p>{Project[0].content}</h3>
-                            <hr className="my-4 separator" />
-                            <h3 class="lead ml-4"><p className="text-success" style={{ fontFamily: "Oswald" }}><b>Technologies Used:</b></p> {Project[0].backend_category} {Project[0].backend_category != null && Project[0].frontend_category != null ? ',' : ''} {Project[0].frontend_category}</h3>
-                            <hr className="my-4 separator" />
 
+                            <h1 className="display-4 ml-4" style={{ textTransform: "uppercase" }}>
+                                <strong>
+                                    {title}
+                                </strong>
+                            </h1>
 
-
-
-
-                            <h3 class="lead ml-4"><p className="text-success" style={{ fontFamily: "Oswald" }}><b>Live Version:</b></p>
-                                {Project[0].live_server != null ? <a className="text-primary" target="_blank" rel="noopener noreferrer" href={Project[0].live_server}>Click Here</a> : <p><TiCancel /> No</p>}
+                            <hr />
+                            
+                            <h3 className="lead ml-4" >
+                                <p className="details-header">
+                                    <b>Proje İçeriği:</b>
+                                </p>
+                                {content}
                             </h3>
-                            <hr className="my-4 separator" />
+
                             <h3 class="lead ml-4">
-                                <p className="text-success" style={{ fontFamily: "Oswald" }}><b>The Code:</b></p>
-                                {Project[0].live_server != null ? <a className="text-primary" target="_blank" rel="noopener noreferrer" href={Project[0].github_repository}>Click Here</a> : <p><TiCancel /> No</p>}
+                                <p className="details-header">
+                                    <b>
+                                        Kullanılan Teknolojiler:
+                                    </b>
+                                </p>
+                                <a target="_blank" rel="noopener noreferrer" href={createSearchLink(websiteUrl, backend_category)}>
+                                    {backend_category}</a>
+                                {comaCreator(backend_category, frontend_category)}
+                                <a target="_blank" rel="noopener noreferrer" href={createSearchLink(websiteUrl, frontend_category)}>
+                                    {frontend_category}
+                                </a>
+                            </h3>
+
+                            <h3 class="lead ml-4"><p className="details-header"><b>Site: </b></p>
+
+                                {live_server != null
+                                    ?
+                                    <a target="_blank" rel="noopener noreferrer" href={live_server}>Buraya tıklayın.</a>
+                                    :
+                                    <p><TiCancel /> No</p>
+                                }
+                            </h3>
+                            <h3 class="lead ml-4">
+                                <p className="details-header"><b>Kod: </b></p>
+                                {github_repository != null
+                                    ?
+                                    <a className="" target="_blank" rel="noopener noreferrer" href={github_repository}>Buraya tıklayın</a>
+                                    :
+                                    <p><TiCancel /> No</p>
+                                }
                             </h3>
                         </div>
                     </div>
                 )
-            } else {
-                return (
-                    <Alert variant="danger">
-                        <Alert.Heading >Couldn't find anything!</Alert.Heading>
-                        <p>
-                            Looks like there are no project related to your search. Please try to search another title.
-        </p>
-                    </Alert>
-                )
             }
-        } else {
+
+        }
+        else if (!this.state.Render && !this.state.error) {
+            return (<CustomSpinner />)
+        }
+        else {
             return (
-                <CustomSpinner />
+                <Alert variant="danger">
+                    <Alert.Heading >Burada birşey yok gibi..</Alert.Heading>
+                    <p>
+                        Görünüşe göre aramanızla ilgili herhangi bir sonuç bulunamadı.
+                    </p>
+                </Alert>
             )
         }
+
 
     }
 }

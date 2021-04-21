@@ -1,10 +1,22 @@
 import React, { Component } from 'react'
 import { DiStackoverflow } from 'react-icons/di'
 import { FaGithub } from 'react-icons/fa'
-import { AiFillTwitterSquare } from 'react-icons/ai'
+import { AiFillTwitterSquare, AiOutlineQuestionCircle } from 'react-icons/ai'
 import { GrLinkedin, GrCircleInformation, GrDocumentUser } from 'react-icons/gr'
 import { RiAccountPinCircleLine } from 'react-icons/ri'
 import CustomSpinner from './CustomSpinner'
+import { AiOutlineProject } from 'react-icons/ai'
+import Project from './Project'
+import first from "../1.png"
+import second from "../2.png"
+import third from "../3.png"
+import fourth from "../4.png"
+import fifth from "../5.png"
+import linkedin from "../LinkedIn.png"
+import github from "../git.png"
+import stackoverflow from "../stackoverflow.png"
+import resume from "../resume.png"
+import { Carousel } from 'react-bootstrap'
 
 export class Home extends Component {
     constructor(props) {
@@ -14,84 +26,176 @@ export class Home extends Component {
             data: '',
             Render: false
         }
+        this.fetchAll = this.fetchAll.bind(this)
     }
 
     componentWillMount() {
-        this.fetchGeneralInformation()
+        this.fetchAll()
     }
 
-    async fetchGeneralInformation() {
+    async fetchAll() {
         var generalInfoResponse = await (fetch(`${this.props.websiteUrl}/api/general-information/`))
         var data = await generalInfoResponse.json()
+        var projectResponse = await (fetch(`${this.props.websiteUrl}/api/project-list/`))
+        var projectList = await projectResponse.json()
         this.setState({
             data: data,
+            projectList: projectList,
             Render: true
         })
+
 
     }
 
     render() {
+        var projects = this.state.projectList
+        const websiteUrl = this.props.websiteUrl
 
         if (this.state.Render) {
             return (
+                <div className="text-dark text-center" style={{ backgroundColor: "white" }}>
+                    <Carousel className="mb-5 slides animate__animated animate__fadeIn">
+                        <Carousel.Item>
+                            <img
+                                className="d-block w-100"
+                                src={first}
+                                alt="First"
+                            />
 
-                <div className="parentComponent">
-
-                    <h3 className="text-black text-center" style={{ fontFamily: "Oswald" }}><GrCircleInformation />  Information About Me</h3>
-                    <hr className="separator" />
-                    <div className="row mb-5 mt-5">
-
-                        <div className="col-lg-4 col-md-6 col-sm-12 mb-5">
-                            {this.state.who_am_i}
-                            <h4 className="text-black" style={{ fontFamily: "Oswald" }}>Who am I? </h4>
-                            <p className="text-black">
-                                {this.state.data[0].who_am_i}
-                </p>
-                        </div>
-                        <div className="col-lg-4 col-md-6 col-sm-12 mb-5">
-                            <h4 className="text-black" style={{ fontFamily: "Oswald" }}>What are my technical skills? </h4>
-                            <p className="text-black">
-                            {this.state.data[0].what_are_my_technical_skills}
-
-         </p>
-                        </div>
-                        <div className="col-lg-4 col-md-6 col-sm-12">
-                            <h4 className="text-black" style={{ fontFamily: "Oswald" }}>What is my personality? </h4>
-                            <p className="text-black">
-                            {this.state.data[0].what_is_my_personality}
-        </p>
-                        </div>
-                    </div>
-                    <div className="resumeSection mt-5">
-                        <h3 className="text-black text-center" style={{ fontFamily: "Oswald" }}><GrDocumentUser />  My Resume</h3>
+                        </Carousel.Item>
+                        <Carousel.Item>
+                            <a href="http://memorychallange.herokuapp.com/" rel="noopener noreferrer" target="_blank">
+                                <img
+                                    className="d-block w-100"
+                                    src={second}
+                                    alt="Memorychallange"
+                                />
+                            </a>
+                        </Carousel.Item>
+                        <Carousel.Item>
+                            <a href="http://memorychallange.herokuapp.com/" rel="noopener noreferrer" target="_blank">
+                                <img
+                                    className="d-block w-100"
+                                    src={third}
+                                    alt="Portfolio"
+                                />
+                            </a>
+                        </Carousel.Item>
+                        <Carousel.Item>
+                            <a href="http://nasaapiproject.herokuapp.com/" rel="noopener noreferrer" target="_blank">
+                                <img
+                                    className="d-block w-100"
+                                    src={fourth}
+                                    alt="Nasa API Project"
+                                />
+                            </a>
+                        </Carousel.Item>
+                        <Carousel.Item>
+                            <a href="http://ebayscraperapp.herokuapp.com/" rel="noopener noreferrer" target="_blank">
+                                <img
+                                    className="d-block w-100"
+                                    src={fifth}
+                                    alt="Ebayscraperapp"
+                                />
+                            </a>
+                        </Carousel.Item>
+                    </Carousel>
+                    <div className="whoami animate__animated animate__fadeInUp">
+                        <h3 className="text-black text-center mt-5" style={{ textTransform: 'uppercase' }}><strong><AiOutlineQuestionCircle /> hakkımda</strong></h3>
                         <hr className="separator" />
                         <div className="row">
-                            <div className="col">
-                                <p className="text-black text-center">The resume is important for candidates who applied for jobs. You can download my resume just by clicking <a href="#">here</a>.</p>
+                            <div className="col-lg-4 col-md-6 col-sm-12 mb-5">
+
+                                <h4 className="information-header">{this.state.data[0].first_section_header}</h4>
+                                <p className="information-description">
+                                    {this.state.data[0].first_section_description}
+                                </p>
                             </div>
+
+                            <div className="col-lg-4 col-md-6 col-sm-12 mb-5">
+                                <h4 className="information-header">{this.state.data[0].second_section_header}</h4>
+                                <p className="information-description">
+                                    {this.state.data[0].second_section_description}
+                                </p>
+                            </div>
+
+                            <div className="col-lg-4 col-md-6 col-sm-12 mb-5">
+                                <h4 className="information-header">{this.state.data[0].third_section_header}</h4>
+                                <p className="information-description">
+                                    {this.state.data[0].third_section_description}
+                                </p>
+                            </div>
+
 
                         </div>
                     </div>
-                    <div className="mediaAccounts mb-5 mt-5">
-                        <h3 className="text-black text-center" style={{ fontFamily: "Oswald" }}><RiAccountPinCircleLine />  My Accounts</h3>
+                    <div className="resumeSection animate__animated animate__fadeInUp">
+                        <h3 className="text-center text-uppercase animate__animated animate__fadeIn"><GrDocumentUser /> <strong>özgeçmişim</strong></h3>
+
+                        <hr className="separator" />
+                        <img src={resume} className="img-fluid rounded" style={{ border: "0.5px solid #ebebeb" }} />
+
+                    </div>
+                    <div className="mediaAccounts animate__animated animate__fadeInUp mb-5 mt-5 animate__delay-1s">
+                        <h3 className="text-center text-uppercase"><RiAccountPinCircleLine /> <strong>hesaplarım</strong></h3>
                         <hr className="separator" />
                         <div className="row text-center">
 
                             <div className="col-lg-4 col-md-6 col-sm-12 mb-3 mt-3">
-                                <a className="btn btn-lg btn-outline-dark social-media-button" target="_blank" rel="noopener noreferrer" href={this.state.data[0].stackoverflow_link}><h3 style={{ fontFamily: "Oswald" }}><DiStackoverflow /> Stackoverflow</h3></a>
+                                <a href={this.state.data[0].linkedin} target="_blank" rel="noopener noreferrer" className="btn btn-sm btn-outline-light">
+                                    <img src={linkedin} className="img-fluid social-media-button" />
+                                </a>
+
                             </div>
                             <div className="col-lg-4 col-md-6 col-sm-12 mb-3 mt-3">
-                                <a className="btn btn-lg btn-outline-dark social-media-button" target="_blank" rel="noopener noreferrer" href={this.state.data[0].github_link}><h3 style={{ fontFamily: "Oswald" }}><FaGithub /> Github</h3></a>
+                                <a href={this.state.data[0].github_link} target="_blank" rel="noopener noreferrer" className="btn btn-outline-light">
+                                    <img src={github} className="img-fluid social-media-button" />
+                                </a>
                             </div>
+
                             <div className="col-lg-4 col-md-6 col-sm-12 mb-3 mt-3">
-                                <a className="btn btn-lg btn-outline-dark social-media-button" target="_blank" rel="noopener noreferrer" href={this.state.data[0].twitter}><h3 style={{ fontFamily: "Oswald" }}><AiFillTwitterSquare /> Twitter</h3></a>
-                            </div>
-                            <div className="col-lg-4 col-md-6 col-sm-12 mb-3 mt-3">
-                                <a className="btn btn-lg btn-outline-dark social-media-button" target="_blank" rel="noopener noreferrer" href={this.state.data[0].linkedin}><h3 style={{ fontFamily: "Oswald" }}><GrLinkedin /> Linkedin</h3></a>
+                                <a href={this.state.data[0].stackoverflow_link} target="_blank" rel="noopener noreferrer" className="btn btn-outline-light">
+                                    <img src={stackoverflow} className="img-fluid social-media-button" />
+                                </a>
                             </div>
 
                         </div>
+
                     </div>
+                    <div className="projects_developed animate__animated animate__fadeInUp animate__delay-1s">
+                        <h3 className="text-black text-center mt-5" style={{ textTransform: 'uppercase' }}><strong> <AiOutlineProject /> geliştirdiğim projeler neler?</strong></h3>
+                        <hr className="separator" />
+                        <div className="row" style={{ marginBottom: "200px" }}>
+
+                            {projects.map(function (project, index) {
+                                function urlImage(imageUrl) {
+                                    return (`${websiteUrl}/api` + imageUrl)
+                                }
+                                function urlDetail(detailUrl) {
+                                    return ("/project-detail/" + detailUrl)
+                                }
+
+                                return (
+                                    <div key={index} className="col-lg-4 col-md-6 col-sm-11 col-xs-12 mt-4">
+
+                                        <Project
+                                            websiteUrl={websiteUrl}
+                                            url_detail={urlDetail(project.slug)}
+                                            url_image={urlImage(project.image)}
+                                            project_title={project.title}
+                                            project_description={project.description}
+                                            project_backend_category={project.backend_category}
+                                            project_frontend_category={project.frontend_category}
+                                        />
+                                    </div>
+                                )
+                            })}
+                        </div>
+
+
+                    </div>
+
+
                 </div>
             )
         }

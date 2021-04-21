@@ -1,12 +1,14 @@
 import React from 'react'
-import {GiPowerLightning} from 'react-icons/gi'
+import { GiPowerLightning } from 'react-icons/gi'
 
-function Footer() {
+function Footer(props) {
+    
+
     return (
-
-        <footer style={{backgroundColor:"#212121"}} className="footer fixed-bottom text-white text-center">
+        
+        <footer style={{ backgroundColor: "#02203c"}} className={"footer text-white text-center p-4 animate__animated animate__fadeIn animate__delay-4s" + props.sticky}>
             <div>
-                <span style={{ fontFamily: "Oswald" }}><GiPowerLightning/> Powered by <a style={{color:"#c2f2cf"}} href="https://www.django-rest-framework.org/" rel="noopener noreferrer" target="_blank">Django Rest API</a> & <a style={{color:"#c2f2cf"}} href="https://reactjs.org/" rel="noopener noreferrer" target="_blank">React.js</a>
+                <span style={{fontSize:"22px"}}>Berk Hüseyin Gaffaroğlu © 2021 Tüm Hakları Saklıdır.
                 </span>
             </div>
         </footer>

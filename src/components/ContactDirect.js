@@ -123,35 +123,37 @@ export class ContactDirect extends Component {
         )
 
         if (this.state.showMessage) {
-            var message = <Alert className="alert alert-success"><Alert.Heading ><span style={{fontFamily:"Oswald"}}>Your message sent!</span> </Alert.Heading><p style={{fontFamily:"Raleway"}}>This message sent to my admin page which I regularly check. 
-                If you want a faster response please use my e-mail <a href="mailto:berk.gaffaroglu@gmail.com">berk.gaffaroglu.gmail.com</a> I will try to return to your message as soon as possible.</p></Alert>
+            var message = <Alert className="alert alert-success"><Alert.Heading ><span>Mesajınız gönderildi!</span> </Alert.Heading><p>Eğer daha hızlı cevap almak istiyorsanız <a href="mailto:berkgaffaroglu@gmail.com">berkgaffaroglu@gmail.com</a> adresine e-mail atabilirsiniz.</p></Alert>
         }
         if (this.state.hasErrors) {
             var message = <Alert className="alert alert-danger">
-                <Alert.Heading>Your message couldn't send</Alert.Heading>
-                <p>Please fill the areas that are required.</p>
+                <Alert.Heading>Mesajınız gönderilemedi.</Alert.Heading>
+                <p>Lütfen gerekli tüm alanları doldurun.</p>
             </Alert>
         }
         return (
-            <React.Fragment>
+            <>
+  
                 {message}
-                < Form onSubmit={this.handleSubmit} id="form" >
+                <div class="row">
+                    <div class="col-12">
+                < Form size="lg" onSubmit={this.handleSubmit} id="form" >
                     <Form.Group>
-                        <Form.Label>Title {overlayInfo}</Form.Label>
+                        <Form.Label>Mesaj Başlığı {overlayInfo}</Form.Label>
                         <Form.Control id="title" onChange={this.handleChange} type="text" value={this.state.activeContact.title} />
                     </Form.Group>
 
                     <Form.Group>
-                        <Form.Label>Content {overlayInfo}</Form.Label>
+                        <Form.Label>Mesaj İçeriği {overlayInfo}</Form.Label>
                         <Form.Control id="content" as="textarea" onChange={this.handleChange} value={this.state.activeContact.content} rows="3" />
                     </Form.Group>
 
                     <Form.Group>
-                        <Form.Label>E- mail {overlayInfo}</Form.Label>
+                        <Form.Label>E-mail'iniz {overlayInfo}</Form.Label>
                         <Form.Control id="e_mail" type="text" onChange={this.handleChange} value={this.state.activeContact.e_mail} rows="3" />
                     </Form.Group>
                     <Form.Group>
-                        <Form.Label>Company Name</Form.Label>
+                        <Form.Label>Şirket Adı</Form.Label>
                         <Form.Control id="company_name" type="text" onChange={this.handleChange} value={this.state.activeContact.company_name} rows="3" />
                     </Form.Group>
                     <Form.Group>
@@ -159,15 +161,17 @@ export class ContactDirect extends Component {
                         <Form.Control id="skype" type="text" onChange={this.handleChange} value={this.state.activeContact.skype} rows="3" />
                     </Form.Group>
                     <ul>
-                        <li key="987979472"><Form.Group><p className="text-muted">Please fill the required fields that have the symbol  <span className="text-danger" style={{fontSize:"15px"}}>(<AiFillStar/>)</span></p></Form.Group></li>
+                        <li key="987979472"><Form.Group><p className="text-muted">Lütfen  <span className="text-danger" style={{fontSize:"15px"}}>(<AiFillStar/>)</span> ile işaretlenmiş tüm alanları doldurun.</p></Form.Group></li>
                     </ul>
                     <Form.Group>
 
-                        <button type="submit" className="btn btn-lg btn-success">Send</button>
+                        <button type="submit" className="btn btn-lg btn-success">Gönder</button>
                     </Form.Group>
 
                 </Form >
-            </React.Fragment>
+                </div>
+            </div>
+            </>
         )
     }
 }

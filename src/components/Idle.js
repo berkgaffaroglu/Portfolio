@@ -5,9 +5,9 @@ export class Idle extends Component {
         return (
             <div>
                 <Alert variant="danger">
-                    <Alert.Heading >Sorry! There was an error.</Alert.Heading>
+                    <Alert.Heading >Aradığınız sayfa bulunamadı.</Alert.Heading>
                     <p>
-                        Looks like the page that you are looking for either removed or doesn't exists.
+                        Görünüşe göre aradığınız sayfa bu sitede yok.
         </p>
                 </Alert>
             </div>

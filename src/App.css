@@ -1,72 +1,105 @@
 @font-face {
-  font-family: 'Pangolin';
-  src: local('Pangolin'), url(./fonts/Pangolin-Regular.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Roboto';
-  src: local('Roboto'), url(./fonts/Roboto-Regular.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Oswald';
-  src: local('Oswald'), url(./fonts/Oswald.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Raleway';
-  src: local('Raleway'), url(./fonts/Raleway.ttf) format('truetype');
+    font-family: 'Pangolin';
+    src: local('Pangolin'), url(./fonts/Pangolin-Regular.ttf) format('truetype');
 }
 
+@font-face {
+    font-family: 'Roboto';
+    src: local('Roboto'), url(./fonts/Roboto-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Oswald';
+    src: local('Oswald'), url(./fonts/Oswald.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: local('Raleway'), url(./fonts/Raleway.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'KumbhSans';
+    src: local('KumbhSans'), url(./fonts/KumbhSans-Regular.ttf) format('truetype');
+}
 .separator {
-  border: 1px black #643c3c;
+    animation: lightSpeedInLeft;
+    animation-duration: 0.5s;
+    border: .5px solid #5cb85c;
+    margin-bottom: 40px;
+    width: 300px;
 }
 
 body {
-  font-family: Roboto !important;
+    font-family: KumbhSans !important;
 }
+
 .projectImage {
-  width: 100px;
-  height: 100px;
+    width: 100px;
+    height: 100px;
 }
-.project-detail-img{
-  width: 80%;
-  max-width: 500px;
+
+.project-detail-img {
+    width: 95%;
 }
+
+.avatar {
+    align-self: center;
+    vertical-align: middle;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
 .project-card {
-  margin:10px;
-  padding: 10px;
+    margin-bottom: 10px;
+    padding: 50px;
+    height:750px;
+    
 }
+
 .project-card-image:hover {
-  transform: scale(1.004);
-  cursor: pointer;
+    transform: scale(1.004);
+    cursor: pointer;
 }
-.project-card-image{
-  transform-origin: 0 0;
-  transition: transform .25s, visibility .25s ease-in;
-  height: 200px;
+
+.project-card-image {
+    transform-origin: 0 0;
+    transition: transform .25s, visibility .25s ease-in;
+    height: 200px;
 }
-.social-media-button{
-  width: 300px;
+
+.social-media-button {
+    width: 300px;
 }
+
 .details-button {
-  width:210px;
+    width: 210px;
 }
+
 .project-title {
-  color:#46bd7f;
+    color: #46bd7f;
 }
+
 .project-title:hover {
-  cursor: pointer;
-  color:#399e69;
+    cursor: pointer;
+    color: #399e69;
 }
-.nav-element-header {
-  font-family: Raleway;
-  font-size:23px
-}
-.nav-element {
-  font-family: Raleway;
-  font-size:18px
-}
+
 .detail-link {
-  color:#239151;
+    color: #239151;
 }
+
 .detail-link:hover {
-  color:#176638;
+    color: #176638;
+}
+
+.information-description {
+    font-size: 22px;
+}
+
+.details-header {
+    font-size: 22px;
+    color: #68b099;
+    text-transform: uppercase;
 }

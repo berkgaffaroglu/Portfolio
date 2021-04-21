@@ -55,9 +55,12 @@ class Contact(models.Model):
         return self.title
 
 class GeneralInformation(models.Model):
-    who_am_i = models.TextField()
-    what_are_my_technical_skills = models.TextField()
-    what_is_my_personality = models.TextField()
+    first_section_header = models.TextField(null=True, blank=True, max_length=255)
+    first_section_description = models.TextField(null=True, blank=True, max_length=255)
+    second_section_header = models.TextField(null=True, blank=True, max_length=255)
+    second_section_description = models.TextField(null=True, blank=True, max_length=255)
+    third_section_header = models.TextField(null=True, blank=True, max_length=255)
+    third_section_description = models.TextField(null=True, blank=True, max_length=255)
     stackoverflow_link = models.CharField(null=True, blank=True, max_length=255)
     github_link = models.CharField(null=True, blank=True, max_length=255)
     twitter = models.CharField(null=True, blank=True, max_length=255)

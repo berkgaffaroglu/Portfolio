@@ -44,15 +44,15 @@ class Contact extends Component {
 
         return (
             <React.Fragment>
-                <h3 className="text-black text-center" style={{ fontFamily: "Oswald" } , { textTransform: 'uppercase' }}><strong> <IoMdContact />  Contact</strong></h3>
+                <h3 className="text-black text-center" style={{ textTransform: 'uppercase' }}><strong><IoMdContact /> İLETİŞİM</strong></h3>
                 <hr className="separator" />
                 <Nav variant="tabs" onSelect={handleSelect} defaultActiveKey='/contact/direct'>
 
                     <Nav.Item>
-                        <LinkContainer exact to="/contact/direct"><Nav.Link eventKey="0" ><GrContact /> <span style={{ fontFamily: "Raleway" }}>Direct</span></Nav.Link></LinkContainer>
+                        <LinkContainer exact to="/contact/direct"><Nav.Link eventKey="0" ><GrContact /> <span style={{ fontFamily: "Raleway" }}>Direkt</span></Nav.Link></LinkContainer>
                     </Nav.Item>
                     <Nav.Item>
-                        <LinkContainer exact to="/contact/information"><Nav.Link eventKey="1"><RiInformationLine /> <span style={{ fontFamily: "Raleway" }}>Information</span></Nav.Link></LinkContainer>
+                        <LinkContainer exact to="/contact/information"><Nav.Link eventKey="1"><RiInformationLine /> <span style={{ fontFamily: "Raleway" }}>Bilgi</span></Nav.Link></LinkContainer>
                     </Nav.Item>
 
                 </Nav>
