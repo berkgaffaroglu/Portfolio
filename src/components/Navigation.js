@@ -35,7 +35,7 @@ class Navigation extends Component {
     render() {
         return (
             
-            <Navbar style={{ backgroundColor: "#02203c" , zIndex:"999"}} variant="dark" className="p-4 mb-3" expand="lg">
+            <Navbar style={{ backgroundColor: "#02203c" , zIndex:"999"}} variant="dark" className="p-4 mb-4" expand="lg">
 
                 <LinkContainer exact to='/'><Navbar.Brand><img src={logo} className="ml-lg-5 mr-lg-5"></img></Navbar.Brand></LinkContainer>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -43,7 +43,9 @@ class Navigation extends Component {
                     <br />
                     <Nav className="nav-element">
                         <LinkContainer exact to='/'><Nav.Link className="custom-navlink animate__animated animate__fadeIn animate__delay__2s"><span style={{ fontSize: "22px" }} className="text-uppercase mr-2">anasayfa</span></Nav.Link></LinkContainer>
-                        <LinkContainer to='/projects'><Nav.Link className="custom-navlink animate__animated animate__fadeIn"><span style={{ fontSize: "22px" }} className="text-uppercase mr-2">projeler</span></Nav.Link></LinkContainer>
+                        <LinkContainer to='/projects'><Nav.Link className="custom-navlink animate__animated animate__fadeIn"><span style={{ fontSize: "22px" }} className="text-uppercase mr-2">projelerim</span></Nav.Link></LinkContainer>
+                        <LinkContainer to='/certificates'><Nav.Link className="custom-navlink animate__animated animate__fadeIn"><span style={{ fontSize: "22px" }} className="text-uppercase mr-2">sertifikalarım</span></Nav.Link></LinkContainer>
+                        <LinkContainer to='/about'><Nav.Link className="custom-navlink animate__animated animate__fadeIn"><span style={{ fontSize: "22px" }} className="text-uppercase mr-2">hakkımda</span></Nav.Link></LinkContainer>
                         <LinkContainer to='/contact/direct'><Nav.Link className="custom-navlink animate__animated animate__fadeIn"><span style={{ fontSize: "22px" }} className="text-uppercase mr-2">iletişim</span></Nav.Link></LinkContainer>
                     </Nav>
                     <Form className="mr-auto animate__animated animate__fadeIn"  onSubmit={this.handleSubmit} inline>

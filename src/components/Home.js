@@ -1,22 +1,24 @@
 import React, { Component } from 'react'
 import { DiStackoverflow } from 'react-icons/di'
 import { FaGithub } from 'react-icons/fa'
-import { AiFillTwitterSquare, AiOutlineQuestionCircle } from 'react-icons/ai'
 import { GrLinkedin, GrCircleInformation, GrDocumentUser } from 'react-icons/gr'
 import { RiAccountPinCircleLine } from 'react-icons/ri'
 import CustomSpinner from './CustomSpinner'
 import { AiOutlineProject } from 'react-icons/ai'
 import Project from './Project'
-import first from "../1.png"
-import second from "../2.png"
-import third from "../3.png"
-import fourth from "../4.png"
-import fifth from "../5.png"
+import first from "../images/sliders/1.png"
+import second from "../images/sliders/2.png"
+import third from "../images/sliders/3.png"
+import fourth from "../images/sliders/4.png"
+import fifth from "../images/sliders/5.png"
 import linkedin from "../LinkedIn.png"
 import github from "../git.png"
 import stackoverflow from "../stackoverflow.png"
 import resume from "../resume.png"
 import { Carousel } from 'react-bootstrap'
+import Certificate from './Certificates'
+import Resume from './Resume'
+import About from './About'
 
 export class Home extends Component {
     constructor(props) {
@@ -50,8 +52,10 @@ export class Home extends Component {
     render() {
         var projects = this.state.projectList
         const websiteUrl = this.props.websiteUrl
-
+        
         if (this.state.Render) {
+            var data = this.state.data[0][0]
+
             return (
                 <div className="text-dark text-center" style={{ backgroundColor: "white" }}>
                     <Carousel className="mb-5 slides animate__animated animate__fadeIn">
@@ -73,7 +77,7 @@ export class Home extends Component {
                             </a>
                         </Carousel.Item>
                         <Carousel.Item>
-                            <a href="http://memorychallange.herokuapp.com/" rel="noopener noreferrer" target="_blank">
+                            <a href="https://github.com/berkgaffaroglu/portfolio" rel="noopener noreferrer" target="_blank">
                                 <img
                                     className="d-block w-100"
                                     src={third}
@@ -100,40 +104,12 @@ export class Home extends Component {
                             </a>
                         </Carousel.Item>
                     </Carousel>
-                    <div className="whoami animate__animated animate__fadeInUp">
-                        <h3 className="text-black text-center mt-5" style={{ textTransform: 'uppercase' }}><strong><AiOutlineQuestionCircle /> hakkımda</strong></h3>
-                        <hr className="separator" />
-                        <div className="row">
-                            <div className="col-lg-4 col-md-6 col-sm-12 mb-5">
-
-                                <h4 className="information-header">{this.state.data[0].first_section_header}</h4>
-                                <p className="information-description">
-                                    {this.state.data[0].first_section_description}
-                                </p>
-                            </div>
-
-                            <div className="col-lg-4 col-md-6 col-sm-12 mb-5">
-                                <h4 className="information-header">{this.state.data[0].second_section_header}</h4>
-                                <p className="information-description">
-                                    {this.state.data[0].second_section_description}
-                                </p>
-                            </div>
-
-                            <div className="col-lg-4 col-md-6 col-sm-12 mb-5">
-                                <h4 className="information-header">{this.state.data[0].third_section_header}</h4>
-                                <p className="information-description">
-                                    {this.state.data[0].third_section_description}
-                                </p>
-                            </div>
-
-
-                        </div>
+                    <div className="whoami animate__animated animate__fadeInUp mt-5">
+                        <About websiteUrl={websiteUrl}/>
                     </div>
                     <div className="resumeSection animate__animated animate__fadeInUp">
-                        <h3 className="text-center text-uppercase animate__animated animate__fadeIn"><GrDocumentUser /> <strong>özgeçmişim</strong></h3>
-
-                        <hr className="separator" />
-                        <img src={resume} className="img-fluid rounded" style={{ border: "0.5px solid #ebebeb" }} />
+                    
+                        <Resume />
 
                     </div>
                     <div className="mediaAccounts animate__animated animate__fadeInUp mb-5 mt-5 animate__delay-1s">
@@ -142,25 +118,26 @@ export class Home extends Component {
                         <div className="row text-center">
 
                             <div className="col-lg-4 col-md-6 col-sm-12 mb-3 mt-3">
-                                <a href={this.state.data[0].linkedin} target="_blank" rel="noopener noreferrer" className="btn btn-sm btn-outline-light">
+                                <a href={data.linkedin} target="_blank" rel="noopener noreferrer" className="btn btn-sm btn-outline-light">
                                     <img src={linkedin} className="img-fluid social-media-button" />
                                 </a>
 
                             </div>
                             <div className="col-lg-4 col-md-6 col-sm-12 mb-3 mt-3">
-                                <a href={this.state.data[0].github_link} target="_blank" rel="noopener noreferrer" className="btn btn-outline-light">
+                                <a href={data.github_link} target="_blank" rel="noopener noreferrer" className="btn btn-outline-light">
                                     <img src={github} className="img-fluid social-media-button" />
                                 </a>
                             </div>
 
                             <div className="col-lg-4 col-md-6 col-sm-12 mb-3 mt-3">
-                                <a href={this.state.data[0].stackoverflow_link} target="_blank" rel="noopener noreferrer" className="btn btn-outline-light">
+                                <a href={data.stackoverflow_link} target="_blank" rel="noopener noreferrer" className="btn btn-outline-light">
                                     <img src={stackoverflow} className="img-fluid social-media-button" />
                                 </a>
                             </div>
-
                         </div>
-
+                    </div>
+                    <div className="certificates animate__animated animate__fadeInUp mb-5 mt-5 animate__delay-1s">
+                    <Certificate websiteUrl={websiteUrl}/>
                     </div>
                     <div className="projects_developed animate__animated animate__fadeInUp animate__delay-1s">
                         <h3 className="text-black text-center mt-5" style={{ textTransform: 'uppercase' }}><strong> <AiOutlineProject /> geliştirdiğim projeler neler?</strong></h3>

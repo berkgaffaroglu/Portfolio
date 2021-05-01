@@ -66,7 +66,6 @@ body {
 .project-card-image {
     transform-origin: 0 0;
     transition: transform .25s, visibility .25s ease-in;
-    height: 200px;
 }
 
 .social-media-button {
@@ -100,6 +99,23 @@ body {
 
 .details-header {
     font-size: 22px;
-    color: #68b099;
-    text-transform: uppercase;
+    color: #3b9696;
+    display: inline;
+    font-weight: bold;
+}
+.certificates_slider .carousel-control-prev /*, .carousel-indicators */ {
+    filter: invert(100%);
+}
+.certificates_slider .carousel-control-next /*, .carousel-indicators */ {
+    filter: invert(100%);
+}
+.certificates_slider .carousel-indicators {
+    filter: invert(100%);
+}
+
+.project-detail-wrapper .carousel-control-prev /*, .carousel-indicators */ {
+    filter: invert(100%);
+}
+.project-detail-wrapper .carousel-control-next /*, .carousel-indicators */ {
+    filter: invert(100%);
 }

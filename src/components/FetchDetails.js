@@ -3,6 +3,7 @@ import { withRouter, useLocation } from 'react-router-dom';
 import { Carousel, CarouselItem, Alert } from 'react-bootstrap';
 import CustomSpinner from './CustomSpinner';
 import { TiCancel } from 'react-icons/ti'
+import { AiOutlineLink } from 'react-icons/ai'
 import { comaCreator, createSearchLink } from './Utils'
 export class FetchDetails extends Component {
     constructor(props) {
@@ -74,7 +75,7 @@ export class FetchDetails extends Component {
                     <div>
 
                         <center>
-                            <Carousel className="bg-dark text-white p-3">
+                            <Carousel className="project-detail-wrapper bg-dark text-white p-3">
 
                                 <CarouselItem>
                                     <img className="project-detail-img" src={urlImage(image)} />
@@ -96,16 +97,14 @@ export class FetchDetails extends Component {
                             
                             <h3 className="lead ml-4" >
                                 <p className="details-header">
-                                    <b>Proje İçeriği:</b>
+                                    <b>Proje İçeriği: </b>
                                 </p>
                                 {content}
                             </h3>
 
                             <h3 class="lead ml-4">
                                 <p className="details-header">
-                                    <b>
-                                        Kullanılan Teknolojiler:
-                                    </b>
+                                    <b>Kullanılan Teknolojiler: </b>
                                 </p>
                                 <a target="_blank" rel="noopener noreferrer" href={createSearchLink(websiteUrl, backend_category)}>
                                     {backend_category}</a>
@@ -119,18 +118,18 @@ export class FetchDetails extends Component {
 
                                 {live_server != null
                                     ?
-                                    <a target="_blank" rel="noopener noreferrer" href={live_server}>Buraya tıklayın.</a>
+                                    <a target="_blank" rel="noopener noreferrer" href={live_server}><span className="text-danger"><AiOutlineLink/> Siteye Git</span></a>
                                     :
-                                    <p><TiCancel /> No</p>
+                                    <span><TiCancel /> Yok</span>
                                 }
                             </h3>
                             <h3 class="lead ml-4">
                                 <p className="details-header"><b>Kod: </b></p>
                                 {github_repository != null
                                     ?
-                                    <a className="" target="_blank" rel="noopener noreferrer" href={github_repository}>Buraya tıklayın</a>
+                                    <a className="" target="_blank" rel="noopener noreferrer" href={github_repository}><span className="text-danger"><AiOutlineLink/> Kodu Gör</span></a>
                                     :
-                                    <p><TiCancel /> No</p>
+                                    <p><TiCancel /> Yok</p>
                                 }
                             </h3>
                         </div>

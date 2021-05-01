@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import Project, ProjectImage, GeneralInformation
-from .serializers import ProjectSerializer, ProjectImageSerializer, ContactSerializer, GeneralInformationSerializer
+from .models import Project, ProjectImage, GeneralInformation, CertificateImage
+from .serializers import ProjectSerializer, ProjectImageSerializer, ContactSerializer, GeneralInformationSerializer,CertificateImageSerializer
 # Create your views here.
 
 
@@ -20,9 +20,20 @@ def apiOverview(request):
 
 @api_view(['GET'])
 def generalInformation(request):
+    
+    parentList = list()
+    context = {
+        "request": request,
+    }
     info = GeneralInformation.objects.all()
-    serializer = GeneralInformationSerializer(info, many=True)
-    return Response(serializer.data)
+    infoSerializer = GeneralInformationSerializer(info, many=True, context=context)
+    certificateImage = CertificateImage.objects.all()
+    certificateImageSerializer = CertificateImageSerializer(certificateImage, many=True, context=context)
+    parentList.append(infoSerializer.data)
+    parentList.append(certificateImageSerializer.data)
+
+
+    return Response(parentList)
 
 
 @api_view(['GET'])

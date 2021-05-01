@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.50cdd949.chunk.css",
-    "main.js": "/static/js/main.69a8c0bf.chunk.js",
-    "main.js.map": "/static/js/main.69a8c0bf.chunk.js.map",
+    "main.css": "/static/css/main.38cf97db.chunk.css",
+    "main.js": "/static/js/main.495ffcff.chunk.js",
+    "main.js.map": "/static/js/main.495ffcff.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.3717989d.js",
     "runtime-main.js.map": "/static/js/runtime-main.3717989d.js.map",
     "static/css/2.5fa572d6.chunk.css": "/static/css/2.5fa572d6.chunk.css",
-    "static/js/2.10e9c095.chunk.js": "/static/js/2.10e9c095.chunk.js",
-    "static/js/2.10e9c095.chunk.js.map": "/static/js/2.10e9c095.chunk.js.map",
+    "static/js/2.ec4116d6.chunk.js": "/static/js/2.ec4116d6.chunk.js",
+    "static/js/2.ec4116d6.chunk.js.map": "/static/js/2.ec4116d6.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.1ac2c9aee606797f8e7fc525bc09bfad.js": "/precache-manifest.1ac2c9aee606797f8e7fc525bc09bfad.js",
+    "precache-manifest.3a0dae92fb013568042a7cfa52b8bcff.js": "/precache-manifest.3a0dae92fb013568042a7cfa52b8bcff.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.5fa572d6.chunk.css.map": "/static/css/2.5fa572d6.chunk.css.map",
-    "static/css/main.50cdd949.chunk.css.map": "/static/css/main.50cdd949.chunk.css.map",
-    "static/js/2.10e9c095.chunk.js.LICENSE.txt": "/static/js/2.10e9c095.chunk.js.LICENSE.txt",
+    "static/css/main.38cf97db.chunk.css.map": "/static/css/main.38cf97db.chunk.css.map",
+    "static/js/2.ec4116d6.chunk.js.LICENSE.txt": "/static/js/2.ec4116d6.chunk.js.LICENSE.txt",
     "static/media/1.png": "/static/media/1.a9395489.png",
     "static/media/2.png": "/static/media/2.e3df5032.png",
     "static/media/3.png": "/static/media/3.7908d4b2.png",
@@ -22,14 +22,15 @@
     "static/media/App.css": "/static/media/Roboto-Regular.11eabca2.ttf",
     "static/media/LinkedIn.png": "/static/media/LinkedIn.820557f9.png",
     "static/media/git.png": "/static/media/git.298f9370.png",
-    "static/media/resume.png": "/static/media/resume.ec62e0ae.png",
+    "static/media/resume.png": "/static/media/resume.902eac34.png",
+    "static/media/resume.pdf": "/static/media/resume.eed3a2b1.pdf",
     "static/media/stackoverflow.png": "/static/media/stackoverflow.aa028664.png"
   },
   "entrypoints": [
     "static/js/runtime-main.3717989d.js",
     "static/css/2.5fa572d6.chunk.css",
-    "static/js/2.10e9c095.chunk.js",
-    "static/css/main.50cdd949.chunk.css",
-    "static/js/main.69a8c0bf.chunk.js"
+    "static/js/2.ec4116d6.chunk.js",
+    "static/css/main.38cf97db.chunk.css",
+    "static/js/main.495ffcff.chunk.js"
   ]
 }

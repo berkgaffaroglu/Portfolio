@@ -6,6 +6,7 @@ import { GrContact } from 'react-icons/gr'
 import { MdEmail } from 'react-icons/md'
 import { RiInformationLine } from 'react-icons/ri'
 import {IoMdContact} from 'react-icons/io'
+import {AiFillPhone} from 'react-icons/ai'
 
 class Contact extends Component {
     constructor(props) {
@@ -35,6 +36,10 @@ class Contact extends Component {
                                 <div className="col-md-6 mt-3 mb-3">
                                     <h1><MdEmail /></h1>
                                     <p>berk.gaffaroglu@gmail.com</p>
+                                </div>
+                                <div className="col-md-6 mt-3 mb-3">
+                                    <h1><AiFillPhone /></h1>
+                                    <p>0 (546) 453 84 37</p>
                                 </div>
                             </div>
                         </center>

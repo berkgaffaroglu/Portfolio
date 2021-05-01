@@ -65,6 +65,14 @@ class GeneralInformation(models.Model):
     github_link = models.CharField(null=True, blank=True, max_length=255)
     twitter = models.CharField(null=True, blank=True, max_length=255)
     linkedin = models.CharField(null=True, blank=True, max_length=255)
-    # Serialize this model. 
+    image = models.ImageField(blank=True, upload_to='images/')
+    
+    # Serialize this model.
+
+    def __str_(self):
+        return "General Info"
 
 
+class CertificateImage(models.Model):
+    project = models.ForeignKey(GeneralInformation, default=None, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='images/')
