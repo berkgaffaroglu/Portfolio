@@ -13,7 +13,7 @@ import Certificate from './components/Certificates';
 import AboutPage from './components/AboutPage';
 var animateCss = require("animate.css")
 function App() {
-  var DEBUG = true;
+  var DEBUG = false;
   var HTTPS;
   var websiteUrl;
   if (DEBUG) {

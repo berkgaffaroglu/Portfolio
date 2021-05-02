@@ -7,6 +7,7 @@ import resume from "../pdfs/resume.pdf"
 import resume_png from "../resume.png"
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 class Resume extends Component {
+    
     render() {
         return (
             <>
@@ -18,11 +19,7 @@ class Resume extends Component {
                         <Dropdown.Item href={resume_png} download="berkgaffaroglucv.png">.PNG</Dropdown.Item>
 
                     </DropdownButton>
-                    <Document
-                        file={resume}
-                    >
-                        <Page pageNumber={1} />
-                    </Document>
+                    <img src={resume_png} className="img-fluid"/>
                 </center>
             </>
         );
