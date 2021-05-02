@@ -20,13 +20,6 @@ function App() {
     websiteUrl = 'http://localhost:8000'
   } else {
     websiteUrl = 'https://berkgaffaroglu.com'
- 
-    fetch(websiteUrl + '/api').catch(HTTPS = false)
-    if(!HTTPS){
-      websiteUrl = 'http://berkgaffaroglu.com'
-    }
-      
-
   }
 
   return (
